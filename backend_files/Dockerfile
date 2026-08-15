@@ -1,0 +1,10 @@
+
+FROM python:3.9-slim
+
+WORKDIR /app
+
+COPY ..
+
+RUN pip install --no-cache-dir --upgrade -r requirements.txt
+
+CMD ["gunicorn", "-w", "", "-b", "0.0.0.0:7860", "app:sales_predictor_api"]
