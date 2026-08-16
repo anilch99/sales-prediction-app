@@ -109,7 +109,7 @@ with tab1:
           if response.status_code == 200:
               result = response.json()
               st.success("Prediction completed")
-              st.metric( "Estimated Sales Price", f"${result['estimatedSalesPrice']:,.2f}" )
+              st.metric( "Estimated Sales Price", f"${result['estimataedSalesPrice']:,.2f}" )                                                  
           else:
               st.error(response.text)
 
