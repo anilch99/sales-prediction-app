@@ -7,7 +7,7 @@ from flask import Flask, request, jsonify
 sales_predictor_api = Flask("Sales Predictor")
 
 #load the trained model
-saved_model_path = "./"
+saved_model_path = "././superkart_sales_predictions_model_v1_0.joblib"
 model = joblib.load(saved_model_path)
 
 #Define a route for the the home page
