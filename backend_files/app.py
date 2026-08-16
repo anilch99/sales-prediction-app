@@ -7,7 +7,7 @@ from flask import Flask, request, jsonify
 sales_predictor_api = Flask("Sales Predictor")
 
 #load the trained model
-saved_model_path = "././superkart_sales_predictions_model_v1_0.joblib"
+saved_model_path = "./superkart_sales_predictions_model_v1_0.joblib"
 model = joblib.load(saved_model_path)
 
 #Define a route for the the home page
@@ -28,7 +28,7 @@ def predict_price():
     "ProductType" : 	product_info["ProductType"],
     "ProductMRP" : 	product_info["ProductMRP"],
     "StoreId" : 	product_info["StoreId"],
-    "StoreEstablishmentYear" : 	product_info["StoreEstablishmentYear"],
+    "StoreAge" : 	product_info["StoreAge"],
     "StoreSize" : 	product_info["StoreSize"],
     "StoreLocationCityType" : 	product_info["StoreLocationCityType"],
     "StoreType" : 	product_info["StoreType"]

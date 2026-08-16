@@ -10,71 +10,83 @@ BACKEND_URL = os.getenv(
 
 st.title("SuperKart Sales Prediction")
 
-product_weight = st.number_input("Product Weight", value=12.0)
 
-product_sugar_content = st.selectbox(
-    "Product Sugar Content",
-    ["Low Sugar", "Regular", "No Sugar"]
-)
+left, right = st.columns(2)
 
-product_allocated_area = st.number_input(
-    "Product Allocated Area",
-    value=0.05
-)
+with left:
+  product_weight = st.number_input("Product Weight", value=12.0)
+  product_sugar_content = st.selectbox(
+      "Product Sugar Content",
+      ["Low Sugar", "Regular", "No Sugar", "reg"]
+  )
+  product_allocated_area = st.number_input(
+      "Product Allocated Area",
+      value=0.05
+  )
 
-product_mrp = st.number_input(
-    "Product MRP",
-    value=150.0
-)
+  product_type = st.selectbox(
+      "Product Type",
+      ["Fruits and Vegetables", "Snack Foods", "Frozen Foods", "Dairy", "Household", "Baking Goods",
+       "Canned", "Health and Hygiene", "Meat", "Soft Drinks", "Breads", "Hard Drinks", "Starchy Foods",
+       "Breakfast", "Seafood", "Others"]
+  )
 
-store_size = st.selectbox(
-    "Store Size",
-    ["Small", "Medium", "High"]
-)
+  product_mrp = st.number_input(
+      "Product MRP",
+      value=150.0
+  )
 
-store_location = st.selectbox(
-    "Store Location",
-    ["Tier 1", "Tier 2", "Tier 3"]
-)
+with right:
+  store_id = st.selectbox(
+      "Store ID",
+      ["OUT001", "OUT002", "OUT003", "OUT004"]
+  )
 
-store_type = st.selectbox(
-    "Store Type",
-    [
-        "Grocery Store",
-        "Supermarket Type1",
-        "Supermarket Type2",
-        "Supermarket Type3"
-    ]
-)
+  store_type = st.selectbox(
+      "Store Type",
+      [
+          "Grocery Store",
+          "Supermarket Type1",
+          "Supermarket Type2",
+          "Departmental Store",
+          "Food Mart"
+      ]
+  )
 
-product_id_char = st.selectbox(
-    "Product ID Category",
-    ["FD", "DR", "NC"]
-)
+  store_location_city_type = st.selectbox(
+      "Store Location City Type",
+      [
+          "Tier 1",
+          "Tier 2",
+          "Tier 3"
+      ]
+  )
 
-store_age = st.number_input(
-    "Store Age",
-    value=10
-)
+  store_size = st.selectbox(
+      "Store SIZE",
+      ["Medium", "High", "Small"]
+  )
 
-product_type_category = st.selectbox(
-    "Product Type Category",
-    ["Perishables", "Non Perishables"]
-)
+  store_age = st.number_input(
+      "Store Age",
+      value=10
+  )
+
 
 if st.button("Predict Sales"):
 
     payload = {
-        "Product_Weight": product_weight,
-        "Product_Sugar_Content": product_sugar_content,
-        "Product_Allocated_Area": product_allocated_area,
-        "Product_MRP": product_mrp,
-        "Store_Size": store_size,
-        "Store_Location_City_Type": store_location,
-        "Store_Type": store_type,
-        "Product_Id_char": product_id_char,
-        "Store_Age_Years": store_age,
-        "Product_Type_Category": product_type_category
+        "ProductWeight": product_weight,
+        "ProductSugarContent": product_sugar_content,
+        "ProductAllocatedArea": product_allocated_area,
+        "ProductType": product_type,
+        "ProductMRP": product_mrp,
+
+        "StoreId": store_id,
+        "StoreType": store_type,
+        "StoreSize": store_size,
+        "StoreAge": store_age,
+        "StoreLocationCityType": store_location_city_type
     }
 
     try:
