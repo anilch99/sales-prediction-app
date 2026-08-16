@@ -3,13 +3,14 @@ import joblib
 import pandas as pd
 from flask import Flask, request, jsonify
 
-#Initiate the flasj app 
+#Initiate the flasj app
 sales_predictor_api = Flask("Sales Predictor")
 
 #load the trained model
+saved_model_path = "./"
 model = joblib.load(saved_model_path)
 
-#Define a route for the the home page 
+#Define a route for the the home page
 @sales_predictor_api.get("/")
 def home():
     return "Welcom to the Sales Predictor API"
@@ -48,7 +49,7 @@ def predict_price_batch():
   input_data = pd.read_csv(file)
 
   predictions = [ x for x in model.predict(input_data.drop("Product_Id", axis=1)).tolist() ]
-  
+
   prod_ID_list = input_data.Product_Id.values().tolist()
 
   return dict(zip(prod_ID_list, predictions))
