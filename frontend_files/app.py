@@ -2,6 +2,7 @@
 import os
 import requests
 import streamlit as st
+import pandas as pd
 
 BACKEND_URL = os.getenv(
     "BACKEND_URL",
@@ -108,7 +109,7 @@ with tab1:
           if response.status_code == 200:
               result = response.json()
               st.success("Prediction completed")
-              st.write("Estimataed Sales Price: ", result.estimataedSalesPrice)
+              st.write("Estimataed Sales Price: ", f"${result["estimataedSalesPrice"]:,.2f}")
           else:
               st.error(response.text)
 
