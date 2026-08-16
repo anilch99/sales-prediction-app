@@ -38,7 +38,7 @@ def predict_price():
 
   prediction = model.predict(input_data).tolist()[0]
 
-  return jsonify({'estimataedSalesPrice': prediction})
+  return jsonify({'estimataedSalesPrice': float(prediction)})
 
 #Define an endpoint o predict the sales price for a single product
 @sales_predictor_api.post("/v1/predictbatch")
@@ -50,7 +50,7 @@ def predict_price_batch():
 
   predictions = [ x for x in model.predict(input_data.drop("Product_Id", axis=1)).tolist() ]
 
-  prod_ID_list = input_data.Product_Id.values().tolist()
+  prod_ID_list = input_data["Product_Id"].tolist()
 
   return dict(zip(prod_ID_list, predictions))
 
