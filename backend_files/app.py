@@ -22,16 +22,16 @@ def predict_price():
   product_info = request.get_json()
 
   product = {
-    "ProductWeight" : 	product_info["ProductWeight"],
-    "ProductSugarContent" : 	product_info["ProductSugarContent"],
-    "ProductAllocatedArea" : 	product_info["ProductAllocatedArea"],
-    "ProductType" : 	product_info["ProductType"],
-    "ProductMRP" : 	product_info["ProductMRP"],
-    "StoreId" : 	product_info["StoreId"],
-    "StoreAge" : 	product_info["StoreAge"],
-    "StoreSize" : 	product_info["StoreSize"],
-    "StoreLocationCityType" : 	product_info["StoreLocationCityType"],
-    "StoreType" : 	product_info["StoreType"]
+    "Product_Weight" : 	product_info["ProductWeight"],
+    "Product_Sugar_Content" : 	product_info["ProductSugarContent"],
+    "Product_Allocated_Area" : 	product_info["ProductAllocatedArea"],
+    "Product_Type" : 	product_info["ProductType"],
+    "Product_MRP" : 	product_info["ProductMRP"],
+    "Store_Id" : 	product_info["StoreId"],
+    "Store_Age" : 	product_info["StoreAge"],
+    "Store_Size" : 	product_info["StoreSize"],
+    "Store_Location_City_Type" : 	product_info["StoreLocationCityType"],
+    "Store_Type" : 	product_info["StoreType"]
   }
 
   input_data = pd.DataFrame([product])
@@ -56,5 +56,5 @@ def predict_price_batch():
 
 #Run the flask app in debug mode
 if __name__ == '__main__':
-  app.run(debug=True)
+  sales_predictor_api.run(debug=True)
 
