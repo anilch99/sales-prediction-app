@@ -16,7 +16,7 @@ def home():
     return "Welcom to the Sales Predictor API"
 
 #Define an endpoint o predict the sales price for a single product
-@sales_predictor_api.post("/v1/product")
+@sales_predictor_api.post("/v1/predict")
 def predict_price():
   #Get the json data from the request param
   product_info = request.get_json()
@@ -41,7 +41,7 @@ def predict_price():
   return jsonify({'estimataedSalesPrice': prediction})
 
 #Define an endpoint o predict the sales price for a single product
-@sales_predictor_api.post("/v1/productbatch")
+@sales_predictor_api.post("/v1/predictbatch")
 def predict_price_batch():
   #get the uploaded CSV file from the request
   file = request.files['file']
